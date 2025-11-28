@@ -26,8 +26,8 @@
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: linear-gradient(135deg, var(--secondary-color), #fb923c);
-    border-color: var(--secondary-color);
+    background: linear-gradient(135deg, #000000, #1e293b);
+    border-color: #000000;
     color: white;
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
@@ -103,7 +103,7 @@
     display: block;
     margin-top: 10px;
     font-size: 0.85rem;
-    color: var(--secondary-color);
+    color: #000000;
     font-weight: 600;
 }
 
@@ -299,8 +299,8 @@
 }
 
 .dot:hover {
-    background: var(--secondary-color);
-    border-color: var(--secondary-color);
+    background: white;
+    border-color: white;
 }
 
 .slider-counter {

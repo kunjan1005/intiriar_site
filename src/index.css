@@ -6,17 +6,21 @@
 }
 
 :root {
-    /* Modern Color Palette */
+    /* Modern Black & White Color Palette */
     --primary-color: #0f172a;
-    --secondary-color: #f97316;
-    --accent-color: #6366f1;
-    --accent-secondary: #8b5cf6;
+    --secondary-color: #ffffff;
+    --accent-color: #1e293b;
+    --accent-secondary: #334155;
     --text-dark: #1e293b;
     --text-light: #64748b;
     --text-muted: #94a3b8;
+    --gray-light: #f1f5f9;
+    --gray-medium: #cbd5e1;
+    --gray-dark: #475569;
     --bg-light: #f8fafc;
     --bg-white: #ffffff;
-    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-black: #000000;
+    --bg-gradient: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
     --bg-gradient-modern: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -71,14 +75,15 @@ section {
 
 .section-tag {
     display: inline-block;
-    color: var(--secondary-color);
+    color: var(--text-dark);
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-size: 0.85rem;
     margin-bottom: 1rem;
     padding: 0.5rem 1.2rem;
-    background: rgba(249, 115, 22, 0.1);
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50px;
 }
 
@@ -103,7 +108,7 @@ section {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--secondary-color), #fb923c);
+    background: linear-gradient(135deg, #000000, #1e293b);
     color: white;
     box-shadow: var(--shadow-lg);
     font-weight: 600;
@@ -112,7 +117,7 @@ section {
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-xl);
-    background: linear-gradient(135deg, #fb923c, var(--secondary-color));
+    background: linear-gradient(135deg, #1e293b, #000000);
 }
 
 /* Image Placeholder */

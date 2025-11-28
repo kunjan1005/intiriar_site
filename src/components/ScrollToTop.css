@@ -27,10 +27,10 @@
 }
 
 .scroll-to-top:hover {
-  background: var(--secondary-color);
-  color: var(--primary-color);
+  background: white;
+  color: #000000;
   transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .scroll-to-top svg {

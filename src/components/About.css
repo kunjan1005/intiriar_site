@@ -33,22 +33,22 @@
 .stat-item {
     text-align: center;
     padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(251, 146, 60, 0.05));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02));
     border-radius: var(--border-radius);
     transition: var(--transition);
-    border: 1px solid rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .stat-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    border-color: rgba(249, 115, 22, 0.3);
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(251, 146, 60, 0.1));
+    border-color: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.05));
 }
 
 .stat-item h3 {
     font-size: 2.5rem;
-    background: linear-gradient(135deg, var(--secondary-color), #fb923c);
+    background: linear-gradient(135deg, #000000, #1e293b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
