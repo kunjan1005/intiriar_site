@@ -1,4 +1,4 @@
-# Elite Interior Design Website
+# Miirus Website
 
 A modern, responsive React website for showcasing interior design projects including residential homes and corporate offices.
 

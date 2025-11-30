@@ -469,7 +469,7 @@ const Hero = () => {
             BeSpoke Luxury, Within Reach
           </h1>
           <p className="hero-subtitle hero-subtitle-desktop">
-            Experience unmatched quality & timely delivery with Elite Design
+            Experience unmatched quality & timely delivery with Miirus
           </p>
         </div>
         

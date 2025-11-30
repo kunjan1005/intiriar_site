@@ -64,8 +64,8 @@ const Navbar = () => {
           <div className="nav-wrapper">
             <div className="logo">
               <img 
-                src="/images/mirus-logo.png" 
-                alt="MIRUS" 
+                src="/images/Miirus White.png" 
+                alt="MIIRUS" 
                 className="logo-img"
                 onError={(e) => {
                   // Fallback if image doesn't exist - show text

@@ -8,7 +8,7 @@ const WhatsAppButton = () => {
     // Format: country code + number without + or 0
     // Example: For US number +1 234-567-8900, use: '1234567890'
     // Example: For India number +91 98765 43210, use: '919876543210'
-    const phoneNumber = '1234567890'; // ⚠️ UPDATE THIS WITH YOUR WHATSAPP NUMBER
+    const phoneNumber = '9099711640'; // ⚠️ UPDATE THIS WITH YOUR WHATSAPP NUMBER
     const message = encodeURIComponent('Hello! I would like to know more about your services.');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
