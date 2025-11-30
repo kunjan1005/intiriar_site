@@ -11,7 +11,7 @@ const About = () => {
         </div>
         <div className="about-content">
           <div className="about-text">
-            <p className="lead">With over 15 years of experience in interior design, we specialize in creating stunning residential and commercial spaces that reflect your unique style and personality.</p>
+            <p className="lead">With over ample experience in interior design, we specialize in creating stunning residential and commercial spaces that reflect your unique style and personality.</p>
             <p>Our team of talented designers combines creativity with functionality to transform houses, corporate offices, and commercial spaces into inspiring environments. We believe that great design should not only look beautiful but also enhance the way you live and work.</p>
             <div className="stats">
               <div className="stat-item">
