@@ -434,9 +434,9 @@ const Hero = () => {
           )}
         </div>
       </div>
-      <div className="form-footer">
+      {/* <div className="form-footer">
         <small>By submitting, you agree to our Privacy Policy</small>
-      </div>
+      </div> */}
     </form>
   );
 

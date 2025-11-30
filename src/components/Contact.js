@@ -141,31 +141,31 @@ const Contact = () => {
         <div className="contact-content">
           <div className="contact-info">
             <h3>Quick Contact</h3>
-            <div className="info-item">
+            {/* <div className="info-item">
               <div className="info-icon">📧</div>
               <div>
                 <h4>Email</h4>
-                <p>info@miirus.com</p>
+                <p>info@elitedesign.com</p>
               </div>
-            </div>
+            </div> */}
             <div className="info-item">
               <div className="info-icon">📞</div>
               <div>
                 <h4>Phone</h4>
-                <p>+1 (555) 123-4567</p>
+                <p>+91 9099711640</p>
               </div>
             </div>
-            <div className="info-item">
+            {/* <div className="info-item">
               <div className="info-icon">📍</div>
               <div>
                 <h4>Address</h4>
                 <p>123 Design Street, Creative City, CC 12345</p>
               </div>
-            </div>
+            </div> */}
             <div className="social-links">
               <a href="#" className="social-link">Instagram</a>
-              <a href="#" className="social-link">Facebook</a>
-              <a href="#" className="social-link">Pinterest</a>
+              {/* <a href="#" className="social-link">Facebook</a> */}
+              {/* <a href="#" className="social-link">Pinterest</a> */}
             </div>
           </div>
           <form className="contact-form" onSubmit={handleSubmit}>
