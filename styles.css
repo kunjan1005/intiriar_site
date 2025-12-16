@@ -6,12 +6,12 @@
 }
 
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #d4af37;
-    --accent-color: #34495e;
-    --text-dark: #2c3e50;
-    --text-light: #7f8c8d;
-    --bg-light: #f8f9fa;
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --accent-color: #333333;
+    --text-dark: #000000;
+    --text-light: #666666;
+    --bg-light: #fafafa;
     --bg-white: #ffffff;
     --transition: all 0.3s ease;
 }
@@ -168,14 +168,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--primary-color);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: #333333;
+    border-color: #333333;
 }
 
 /* Section Styles */
@@ -190,7 +193,7 @@ section {
 
 .section-tag {
     display: inline-block;
-    color: var(--secondary-color);
+    color: var(--text-light);
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -251,7 +254,7 @@ section {
 
 .stat-item h3 {
     font-size: 2.5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
@@ -263,9 +266,10 @@ section {
 .about-image {
     position: relative;
     height: 500px;
-    border-radius: 15px;
+    border-radius: 0px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .image-placeholder {
@@ -294,15 +298,17 @@ section {
 .service-card {
     background: var(--bg-white);
     padding: 2.5rem;
-    border-radius: 15px;
+    border-radius: 0px;
     text-align: center;
     transition: var(--transition);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .service-icon {
@@ -339,7 +345,7 @@ section {
     background: transparent;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
-    border-radius: 50px;
+    border-radius: 0px;
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition);
@@ -349,7 +355,7 @@ section {
 .filter-btn:hover,
 .filter-btn.active {
     background: var(--primary-color);
-    color: white;
+    color: var(--secondary-color);
 }
 
 .portfolio-grid {
@@ -360,7 +366,7 @@ section {
 
 .portfolio-item {
     position: relative;
-    border-radius: 15px;
+    border-radius: 0px;
     overflow: hidden;
     cursor: pointer;
     transition: var(--transition);
@@ -442,12 +448,13 @@ section {
     font-size: 1.5rem;
     width: 50px;
     height: 50px;
-    background: var(--secondary-color);
-    border-radius: 50%;
+    background: var(--primary-color);
+    border-radius: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    color: var(--secondary-color);
 }
 
 .info-item h4 {
@@ -477,16 +484,18 @@ section {
 }
 
 .social-link:hover {
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    transform: translateY(-3px);
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
 .contact-form {
     background: var(--bg-white);
     padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .form-group {
@@ -498,19 +507,19 @@ section {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 0px;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     transition: var(--transition);
-    background: var(--bg-light);
+    background: var(--bg-white);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--secondary-color);
+    border-color: var(--primary-color);
     background: white;
 }
 
@@ -558,6 +567,7 @@ section {
 .footer-section h4 {
     color: var(--secondary-color);
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .footer-section p {
@@ -581,7 +591,8 @@ section {
 
 .footer-section ul li a:hover {
     color: var(--secondary-color);
-    padding-left: 5px;
+    padding-left: 8px;
+    opacity: 1;
 }
 
 .footer-bottom {

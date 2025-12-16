@@ -33,25 +33,22 @@
 .stat-item {
     text-align: center;
     padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02));
-    border-radius: var(--border-radius);
+    background: var(--bg-white);
+    border-radius: 0px;
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
     border-color: rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.05));
+    background: var(--bg-light);
 }
 
 .stat-item h3 {
     font-size: 2.5rem;
-    background: linear-gradient(135deg, #000000, #1e293b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
@@ -65,9 +62,10 @@
 .about-image {
     position: relative;
     height: 400px;
-    border-radius: var(--border-radius-lg);
+    border-radius: 0px;
     overflow: hidden;
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .about-img {
