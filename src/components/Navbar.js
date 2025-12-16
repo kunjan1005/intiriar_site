@@ -64,7 +64,7 @@ const Navbar = () => {
           <div className="nav-wrapper">
             <div className="logo">
               <img 
-                src="/images/Miirus White.png" 
+                src="/images/Miirus White_new.png" 
                 alt="MIIRUS" 
                 className="logo-img"
                 onError={(e) => {

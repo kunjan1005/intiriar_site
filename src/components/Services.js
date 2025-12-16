@@ -4,24 +4,19 @@ import './Services.css';
 const Services = () => {
   const services = [
     {
-      icon: '🏠',
+      image: '/images/services/residential-design.jpg',
       title: 'Residential Design',
-      description: 'Transform your home into a sanctuary that reflects your lifestyle and personality with our bespoke residential design services.'
+      description: 'Transform your home with personalized contemporary interiors that reflect your unique lifestyle and preferences.'
     },
     {
-      icon: '🏢',
-      title: 'Corporate Offices',
-      description: 'Create inspiring work environments that boost productivity and reflect your company\'s brand identity and values.'
+      image: '/images/services/commercial-design.jpg',
+      title: 'Commercial Design',
+      description: 'Create inspiring workspaces that enhance productivity and align with your brand identity.'
     },
     {
-      icon: '🎨',
+      image: '/images/services/space-planning.jpg',
       title: 'Space Planning',
-      description: 'Optimize your space with intelligent layouts that maximize functionality while maintaining aesthetic appeal.'
-    },
-    {
-      icon: '✨',
-      title: 'Consultation',
-      description: 'Expert design consultation to help you make informed decisions about colors, materials, and furniture selection.'
+      description: 'Optimize layouts for maximum functionality while maintaining aesthetic harmony and flow.'
     }
   ];
 
@@ -35,7 +30,16 @@ const Services = () => {
         <div className="services-grid">
           {services.map((service, index) => (
             <div key={index} className="service-card">
-              <div className="service-icon">{service.icon}</div>
+              <div className="service-icon">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="service-icon-img"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
             </div>

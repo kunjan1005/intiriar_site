@@ -30,9 +30,9 @@
 }
 
 .logo-img {
-  height: 150px;
+  height: 180px;
   width: auto;
-  max-width: 160px;
+  max-width: 200px;
   object-fit: contain;
   transition: all 0.3s ease;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
@@ -46,9 +46,9 @@
 @media (min-width: 969px) {
   .logo-img {
     padding-top: 10px;
-    height: 200px;
+    height: 250px;
     width: auto;
-    max-width: 300px;
+    max-width: 350px;
     object-fit: contain;
     transition: all 0.3s ease;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));

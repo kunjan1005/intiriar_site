@@ -64,7 +64,7 @@
 
 .about-image {
     position: relative;
-    height: 500px;
+    height: 400px;
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-xl);
@@ -81,6 +81,10 @@
 @media (max-width: 968px) {
     .about-content {
         grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 350px;
     }
 
     .stats {
