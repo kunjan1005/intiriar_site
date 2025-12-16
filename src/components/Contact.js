@@ -129,7 +129,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="get-in-touch-section">
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Get In Touch</span>
@@ -138,36 +138,23 @@ const Contact = () => {
             Ready to start your project? Fill out the form below and we'll get back to you within 24-48 hours.
           </p>
         </div>
-        <div className="contact-content">
-          <div className="contact-info">
-            <h3>Quick Contact</h3>
-            {/* <div className="info-item">
-              <div className="info-icon">📧</div>
-              <div>
-                <h4>Email</h4>
-                <p>info@elitedesign.com</p>
-              </div>
-            </div> */}
-            <div className="info-item">
-              <div className="info-icon">📞</div>
-              <div>
-                <h4>Phone</h4>
-                <p>+91 9099711640</p>
-              </div>
-            </div>
-            {/* <div className="info-item">
-              <div className="info-icon">📍</div>
-              <div>
-                <h4>Address</h4>
-                <p>123 Design Street, Creative City, CC 12345</p>
-              </div>
-            </div> */}
-            <div className="social-links">
-              <a href="#" className="social-link">Instagram</a>
-              {/* <a href="#" className="social-link">Facebook</a> */}
-              {/* <a href="#" className="social-link">Pinterest</a> */}
-            </div>
+        
+        <div className="contact-info-white">
+          <div className="contact-icons">
+            <a href="tel:+919099711640" className="contact-icon-link phone-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            <a href="#" className="contact-icon-link instagram-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
           </div>
+        </div>
+
+        <div className="contact-content">
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group form-group-half">
