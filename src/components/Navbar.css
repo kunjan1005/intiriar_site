@@ -29,6 +29,76 @@
   height: 40px;
 }
 
+/* Large Logo for Mobile - Top Center */
+.hero-logo-mobile {
+  display: none; /* Hidden by default, shown only on mobile */
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hero-logo-mobile.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-30px) scale(0.85);
+}
+
+.hero-logo-img {
+  height: 200px;
+  width: auto;
+  max-width: 70vw;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.4));
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: logoFadeIn 0.8s ease-out;
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-logo-fallback {
+  font-family: "Inter", sans-serif;
+  color: white;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Hide navbar logo on mobile when not scrolled */
+.logo.hidden-mobile {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  overflow: hidden;
+}
+
+.logo.visible {
+  opacity: 1;
+  visibility: visible;
+  width: auto;
+}
+
 .logo-img {
   height: 180px;
   width: auto;
@@ -209,12 +279,31 @@
 }
 
 @media (max-width: 968px) {
+  /* Show centered logo only on mobile */
+  .hero-logo-mobile {
+    display: flex !important;
+    margin-top: 20px;
+  }
+
+  .hero-logo-img {
+    height: 250px;
+    max-width: 75vw;
+  }
+
+  .nav-wrapper {
+    justify-content: flex-end;
+  }
+
+  .navbar.scrolled .nav-wrapper {
+    justify-content: space-between;
+  }
+
   .nav-menu {
     position: fixed;
     right: -100%;
     top: 0;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(26, 26, 26, 0.2));
     backdrop-filter: blur(20px);
     width: 170px;
     max-width: 75vw;
@@ -303,5 +392,58 @@
     display: flex;
     z-index: 1001;
     position: relative;
+  }
+
+  /* Navbar logo on mobile - visible when scrolled */
+  .logo.hidden-mobile {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .logo.visible {
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    margin-right: auto;
+    margin-left: 0;
+    transform: translateX(0);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: logoSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes logoSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  .logo.visible .logo-img {
+    height: 120px;
+    max-width: 150px;
+    filter: drop-shadow(none);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Hide centered logo on desktop */
+@media (min-width: 969px) {
+  .hero-logo-mobile {
+    display: none;
+  }
+
+  .logo.hidden-mobile {
+    opacity: 1;
+    visibility: visible;
+    width: auto;
   }
 }
