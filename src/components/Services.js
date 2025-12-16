@@ -4,7 +4,7 @@ import './Services.css';
 const Services = () => {
   const services = [
     {
-      image: '/images/services/residential-design.jpg',
+      image: '/images/services/residence.jpeg',
       title: 'Residential Design',
       description: 'Transform your home with personalized contemporary interiors that reflect your unique lifestyle and preferences.'
     },
@@ -14,7 +14,7 @@ const Services = () => {
       description: 'Create inspiring workspaces that enhance productivity and align with your brand identity.'
     },
     {
-      image: '/images/services/space-planning.jpg',
+      image: '/images/services/space.jpeg',
       title: 'Space Planning',
       description: 'Optimize layouts for maximum functionality while maintaining aesthetic harmony and flow.'
     }
