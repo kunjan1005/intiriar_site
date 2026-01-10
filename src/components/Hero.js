@@ -439,12 +439,12 @@ const Hero = () => {
             >
               <option value="">Select Budget Range</option>
               <option value="under-5k">Under ₹5 Lakhs</option>
-              <option value="5k-10k">₹5 Lakhs - ₹10 Lakhs</option>
-              <option value="10k-25k">₹10 Lakhs - ₹25 Lakhs</option>
-              <option value="25k-50k">₹25 Lakhs - ₹50 Lakhs</option>
-              <option value="50k-100k">₹50 Lakhs - ₹1 Crore</option>
-              <option value="100k-250k">₹1 Crore - ₹2.5 Crores</option>
-              <option value="over-250k">Above ₹2.5 Crores</option>
+              <option value="5l-10l">₹5 Lakhs - ₹10 Lakhs</option>
+              <option value="10l-25l">₹10 Lakhs - ₹25 Lakhs</option>
+              <option value="25l-50l">₹25 Lakhs - ₹50 Lakhs</option>
+              <option value="50l-1cr">₹50 Lakhs - ₹1 Crore</option>
+              <option value="100l-2.5cr">₹1 Crore - ₹2.5 Crores</option>
+              <option value="over-2.5cr">Above ₹2.5 Crores</option>
               <option value="not-sure">Not Sure / Prefer to Discuss</option>
             </select>
           </div>
