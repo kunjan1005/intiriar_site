@@ -17,6 +17,7 @@ const Contact = () => {
     message: ''
   });
   const [formMessage, setFormMessage] = useState({ type: '', text: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -88,7 +89,7 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validation
@@ -100,32 +101,80 @@ const Contact = () => {
       return;
     }
 
-    // Simulate form submission
-    setFormMessage({
-      type: 'success',
-      text: 'Thank you for your message! We will get back to you soon.'
-    });
+    setIsSubmitting(true);
+    setFormMessage({ type: '', text: '' });
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      budget: '',
-      timeline: '',
-      projectType: '',
-      bhkType: '',
-      carpetArea: '',
-      designTypes: [],
-      consultationType: '',
-      message: ''
-    });
+    try {
+      // Prepare data to send to Google Apps Script as JSON
+      const submissionData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || '',
+        service: formData.service,
+        budget: formData.budget || '',
+        timeline: formData.timeline || '',
+        projectType: formData.projectType || '',
+        bhkType: formData.bhkType || '',
+        carpetArea: formData.carpetArea || '',
+        designTypes: formData.designTypes.join(', ') || '',
+        consultationType: formData.consultationType || '',
+        message: formData.message
+      };
 
-    // Hide message after 5 seconds
-    setTimeout(() => {
-      setFormMessage({ type: '', text: '' });
-    }, 5000);
+      // POST to Google Apps Script Web App using JSON
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwcKKMfQXuGGtrm59CNV3yRW3AK9jwpKB5eAr9d_yVpNeU0g0PbVXJ4H3S_iNBbHuI/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(submissionData)
+      });
+
+      // Check if request was successful
+      if (response.ok || response.status === 0) {
+        setFormMessage({
+          type: 'success',
+          text: 'Thank you for your message! We will get back to you soon.'
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          budget: '',
+          timeline: '',
+          projectType: '',
+          bhkType: '',
+          carpetArea: '',
+          designTypes: [],
+          consultationType: '',
+          message: ''
+        });
+
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          setFormMessage({ type: '', text: '' });
+        }, 5000);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setFormMessage({
+        type: 'error',
+        text: 'Sorry, there was an error submitting your form. Please try again or contact us directly.'
+      });
+      
+      // Hide error message after 5 seconds
+      setTimeout(() => {
+        setFormMessage({ type: '', text: '' });
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -403,7 +452,9 @@ const Contact = () => {
                 className="form-textarea"
               ></textarea>
             </div>
-            <button type="submit" className="btn btn-primary">Send Message</button>
+            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
             {formMessage.text && (
               <div className={`form-message ${formMessage.type}`}>
                 {formMessage.text}

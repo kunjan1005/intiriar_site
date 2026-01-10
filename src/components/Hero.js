@@ -18,6 +18,7 @@ const Hero = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [snackbars, setSnackbars] = useState([]);
   const snackbarIdCounter = useRef(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -154,7 +155,7 @@ const Hero = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validate budget
@@ -163,28 +164,64 @@ const Hero = () => {
       return;
     }
     
-    // Submit form
-    console.log('Form submitted:', formData);
-    showSnackbar('Thank you! We will contact you soon with a customized quote.', 'success');
+    setIsSubmitting(true);
     
-    // Reset form
-    setFormData({
-      name: '',
-      phone: '',
-      whatsappUpdates: false,
-      projectType: '',
-      bhkType: '',
-      carpetArea: '',
-      designTypes: [],
-      consultationType: '',
-      budget: ''
-    });
-    setFormStep(1);
-    
-    // Close dialog if open
-    setIsDialogOpen(false);
-    
-    // Stay on the same page - no redirect
+    try {
+      // Prepare data to send to Google Apps Script as JSON
+      const submissionData = {
+        name: formData.name || '',
+        email: '', // Hero form doesn't have email field
+        phone: formData.phone || '',
+        service: 'Quote Request', // Default service type for hero form
+        budget: formData.budget || '',
+        timeline: '',
+        projectType: formData.projectType || '',
+        bhkType: formData.bhkType || '',
+        carpetArea: formData.carpetArea || '',
+        designTypes: formData.designTypes.join(', ') || '',
+        consultationType: formData.consultationType || '',
+        message: `WhatsApp Updates: ${formData.whatsappUpdates ? 'Yes' : 'No'}. Project Details: ${formData.projectType || 'Not specified'}`
+      };
+
+      // POST to Google Apps Script Web App using JSON
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwcKKMfQXuGGtrm59CNV3yRW3AK9jwpKB5eAr9d_yVpNeU0g0PbVXJ4H3S_iNBbHuI/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(submissionData)
+      });
+
+      // Check if request was successful
+      if (response.ok || response.status === 0) {
+        showSnackbar('Thank you! We will contact you soon with a customized quote.', 'success');
+        
+        // Reset form
+        setFormData({
+          name: '',
+          phone: '',
+          whatsappUpdates: false,
+          projectType: '',
+          bhkType: '',
+          carpetArea: '',
+          designTypes: [],
+          consultationType: '',
+          budget: ''
+        });
+        setFormStep(1);
+        
+        // Close dialog if open
+        setIsDialogOpen(false);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      showSnackbar('Sorry, there was an error submitting your form. Please try again.', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const openDialog = () => {
@@ -428,8 +465,8 @@ const Hero = () => {
               Next →
             </button>
           ) : (
-            <button type="submit" className="btn-quote">
-              GET FREE QUOTE
+            <button type="submit" className="btn-quote" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'GET FREE QUOTE'}
             </button>
           )}
         </div>
