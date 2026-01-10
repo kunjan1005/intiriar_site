@@ -59,28 +59,10 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Large Centered Logo for Mobile - Only visible at top */}
-      <div className={`hero-logo-mobile ${scrolled ? 'hidden' : ''}`}>
-        <img 
-          src="/images/Miirus White_new.png" 
-          alt="MIIRUS" 
-          className="hero-logo-img"
-          onError={(e) => {
-            e.target.style.display = 'none';
-            if (!e.target.nextSibling) {
-              const fallback = document.createElement('h2');
-              fallback.textContent = 'MIRUS';
-              fallback.className = 'hero-logo-fallback';
-              e.target.parentNode.appendChild(fallback);
-            }
-          }}
-        />
-      </div>
-
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <div className="nav-wrapper">
-            <div className={`logo ${scrolled ? 'visible' : 'hidden-mobile'}`}>
+            <div className="logo">
               <img 
                 src="/images/Miirus White_new.png" 
                 alt="MIIRUS" 

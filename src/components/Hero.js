@@ -18,7 +18,6 @@ const Hero = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [snackbars, setSnackbars] = useState([]);
   const snackbarIdCounter = useRef(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -155,7 +154,7 @@ const Hero = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     // Validate budget
@@ -164,64 +163,28 @@ const Hero = () => {
       return;
     }
     
-    setIsSubmitting(true);
+    // Submit form
+    console.log('Form submitted:', formData);
+    showSnackbar('Thank you! We will contact you soon with a customized quote.', 'success');
     
-    try {
-      // Prepare data to send to Google Apps Script as JSON
-      const submissionData = {
-        name: formData.name || '',
-        email: '', // Hero form doesn't have email field
-        phone: formData.phone || '',
-        service: 'Quote Request', // Default service type for hero form
-        budget: formData.budget || '',
-        timeline: '',
-        projectType: formData.projectType || '',
-        bhkType: formData.bhkType || '',
-        carpetArea: formData.carpetArea || '',
-        designTypes: formData.designTypes.join(', ') || '',
-        consultationType: formData.consultationType || '',
-        message: `WhatsApp Updates: ${formData.whatsappUpdates ? 'Yes' : 'No'}. Project Details: ${formData.projectType || 'Not specified'}`
-      };
-
-      // POST to Google Apps Script Web App using JSON
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwcKKMfQXuGGtrm59CNV3yRW3AK9jwpKB5eAr9d_yVpNeU0g0PbVXJ4H3S_iNBbHuI/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(submissionData)
-      });
-
-      // Check if request was successful
-      if (response.ok || response.status === 0) {
-        showSnackbar('Thank you! We will contact you soon with a customized quote.', 'success');
-        
-        // Reset form
-        setFormData({
-          name: '',
-          phone: '',
-          whatsappUpdates: false,
-          projectType: '',
-          bhkType: '',
-          carpetArea: '',
-          designTypes: [],
-          consultationType: '',
-          budget: ''
-        });
-        setFormStep(1);
-        
-        // Close dialog if open
-        setIsDialogOpen(false);
-      } else {
-        throw new Error('Failed to submit form');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      showSnackbar('Sorry, there was an error submitting your form. Please try again.', 'error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Reset form
+    setFormData({
+      name: '',
+      phone: '',
+      whatsappUpdates: false,
+      projectType: '',
+      bhkType: '',
+      carpetArea: '',
+      designTypes: [],
+      consultationType: '',
+      budget: ''
+    });
+    setFormStep(1);
+    
+    // Close dialog if open
+    setIsDialogOpen(false);
+    
+    // Stay on the same page - no redirect
   };
 
   const openDialog = () => {
@@ -439,12 +402,12 @@ const Hero = () => {
             >
               <option value="">Select Budget Range</option>
               <option value="under-5k">Under ₹5 Lakhs</option>
-              <option value="5k-10k">₹5 Lakhs - ₹10 Lakhs</option>
-              <option value="10k-25k">₹10 Lakhs - ₹25 Lakhs</option>
-              <option value="25k-50k">₹25 Lakhs - ₹50 Lakhs</option>
-              <option value="50k-100k">₹50 Lakhs - ₹1 Crore</option>
-              <option value="100k-250k">₹1 Crore - ₹2.5 Crores</option>
-              <option value="over-250k">Above ₹2.5 Crores</option>
+              <option value="5l-10l">₹5 Lakhs - ₹10 Lakhs</option>
+              <option value="10l-25l">₹10 Lakhs - ₹25 Lakhs</option>
+              <option value="25l-50l">₹25 Lakhs - ₹50 Lakhs</option>
+              <option value="50l-1cr">₹50 Lakhs - ₹1 Crore</option>
+              <option value="100l-2.5cr">₹1 Crore - ₹2.5 Crores</option>
+              <option value="over-2.5cr">Above ₹2.5 Crores</option>
               <option value="not-sure">Not Sure / Prefer to Discuss</option>
             </select>
           </div>
@@ -465,15 +428,15 @@ const Hero = () => {
               Next →
             </button>
           ) : (
-            <button type="submit" className="btn-quote" disabled={isSubmitting}>
-              {isSubmitting ? 'Submitting...' : 'GET FREE QUOTE'}
+            <button type="submit" className="btn-quote">
+              GET FREE QUOTE
             </button>
           )}
         </div>
       </div>
-      {/* <div className="form-footer">
+      <div className="form-footer">
         <small>By submitting, you agree to our Privacy Policy</small>
-      </div> */}
+      </div>
     </form>
   );
 
@@ -506,7 +469,7 @@ const Hero = () => {
             BeSpoke Luxury, Within Reach
           </h1>
           <p className="hero-subtitle hero-subtitle-desktop">
-            Experience unmatched quality & timely delivery with Miirus
+            Experience unmatched quality & timely delivery with Elite Design
           </p>
         </div>
         

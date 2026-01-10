@@ -1,7 +1,7 @@
 /* Footer */
 .footer {
     background: var(--primary-color);
-    color: var(--secondary-color);
+    color: white;
     padding: 3rem 0 1rem;
 }
 
@@ -14,9 +14,11 @@
 
 .footer-section h3,
 .footer-section h4 {
-    color: var(--secondary-color);
+    background: linear-gradient(135deg, #ffffff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1rem;
-    font-weight: 600;
 }
 
 .footer-section p {

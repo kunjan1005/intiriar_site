@@ -17,7 +17,6 @@ const Contact = () => {
     message: ''
   });
   const [formMessage, setFormMessage] = useState({ type: '', text: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -89,7 +88,7 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     // Validation
@@ -101,84 +100,36 @@ const Contact = () => {
       return;
     }
 
-    setIsSubmitting(true);
-    setFormMessage({ type: '', text: '' });
+    // Simulate form submission
+    setFormMessage({
+      type: 'success',
+      text: 'Thank you for your message! We will get back to you soon.'
+    });
 
-    try {
-      // Prepare data to send to Google Apps Script as JSON
-      const submissionData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone || '',
-        service: formData.service,
-        budget: formData.budget || '',
-        timeline: formData.timeline || '',
-        projectType: formData.projectType || '',
-        bhkType: formData.bhkType || '',
-        carpetArea: formData.carpetArea || '',
-        designTypes: formData.designTypes.join(', ') || '',
-        consultationType: formData.consultationType || '',
-        message: formData.message
-      };
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      budget: '',
+      timeline: '',
+      projectType: '',
+      bhkType: '',
+      carpetArea: '',
+      designTypes: [],
+      consultationType: '',
+      message: ''
+    });
 
-      // POST to Google Apps Script Web App using JSON
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwcKKMfQXuGGtrm59CNV3yRW3AK9jwpKB5eAr9d_yVpNeU0g0PbVXJ4H3S_iNBbHuI/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(submissionData)
-      });
-
-      // Check if request was successful
-      if (response.ok || response.status === 0) {
-        setFormMessage({
-          type: 'success',
-          text: 'Thank you for your message! We will get back to you soon.'
-        });
-
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          budget: '',
-          timeline: '',
-          projectType: '',
-          bhkType: '',
-          carpetArea: '',
-          designTypes: [],
-          consultationType: '',
-          message: ''
-        });
-
-        // Hide message after 5 seconds
-        setTimeout(() => {
-          setFormMessage({ type: '', text: '' });
-        }, 5000);
-      } else {
-        throw new Error('Failed to submit form');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setFormMessage({
-        type: 'error',
-        text: 'Sorry, there was an error submitting your form. Please try again or contact us directly.'
-      });
-      
-      // Hide error message after 5 seconds
-      setTimeout(() => {
-        setFormMessage({ type: '', text: '' });
-      }, 5000);
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Hide message after 5 seconds
+    setTimeout(() => {
+      setFormMessage({ type: '', text: '' });
+    }, 5000);
   };
 
   return (
-    <section id="contact" className="get-in-touch-section">
+    <section id="contact" className="contact">
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Get In Touch</span>
@@ -187,35 +138,36 @@ const Contact = () => {
             Ready to start your project? Fill out the form below and we'll get back to you within 24-48 hours.
           </p>
         </div>
-        
-        <div className="contact-info-white">
-          <div className="contact-icons">
-            <a href="tel:+919099711640" className="contact-icon-link phone-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-              <a href="https://www.instagram.com/studio.miirus/?hl=en" target="_blank" rel="noopener noreferrer" className="contact-icon-link instagram-icon">
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#833AB4" />
-                      <stop offset="25%" stopColor="#FD1D1D" />
-                      <stop offset="50%" stopColor="#FCAF45" />
-                      <stop offset="75%" stopColor="#FCAF45" />
-                      <stop offset="100%" stopColor="#833AB4" />
-                    </linearGradient>
-                  </defs>
-                  <rect x="5" y="5" width="40" height="40" rx="12" ry="12" fill="url(#instagram-gradient)" />
-                  <rect x="10" y="10" width="30" height="30" rx="8" ry="8" fill="white" />
-                  <circle cx="25" cy="25" r="8" stroke="url(#instagram-gradient)" strokeWidth="2" fill="none" />
-                  <circle cx="32" cy="18" r="2" fill="url(#instagram-gradient)" />
-                </svg>
-              </a>
-          </div>
-        </div>
-
         <div className="contact-content">
+          <div className="contact-info">
+            <h3>Quick Contact</h3>
+            {/* <div className="info-item">
+              <div className="info-icon">📧</div>
+              <div>
+                <h4>Email</h4>
+                <p>info@elitedesign.com</p>
+              </div>
+            </div> */}
+            <div className="info-item">
+              <div className="info-icon">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <p>+91 9099711640</p>
+              </div>
+            </div>
+            {/* <div className="info-item">
+              <div className="info-icon">📍</div>
+              <div>
+                <h4>Address</h4>
+                <p>123 Design Street, Creative City, CC 12345</p>
+              </div>
+            </div> */}
+            <div className="social-links">
+              <a href="#" className="social-link">Instagram</a>
+              {/* <a href="#" className="social-link">Facebook</a> */}
+              {/* <a href="#" className="social-link">Pinterest</a> */}
+            </div>
+          </div>
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group form-group-half">
@@ -226,7 +178,7 @@ const Contact = () => {
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="John Doe"
+                  placeholder="full name"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -241,7 +193,7 @@ const Contact = () => {
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="john@example.com"
+                  placeholder="xyz@example.com"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -311,12 +263,12 @@ const Contact = () => {
                 >
                   <option value="">Select Budget</option>
                   <option value="under-5k">Under ₹5 Lakhs</option>
-                  <option value="5k-10k">₹5 Lakhs - ₹10 Lakhs</option>
-                  <option value="10k-25k">₹10 Lakhs - ₹25 Lakhs</option>
-                  <option value="25k-50k">₹25 Lakhs - ₹50 Lakhs</option>
-                  <option value="50k-100k">₹50 Lakhs - ₹1 Crore</option>
-                  <option value="100k-250k">₹1 Crore - ₹2.5 Crores</option>
-                  <option value="over-250k">Above ₹2.5 Crores</option>
+                  <option value="5l-10l">₹5 Lakhs - ₹10 Lakhs</option>
+                  <option value="10l-25l">₹10 Lakhs - ₹25 Lakhs</option>
+                  <option value="25l-50l">₹25 Lakhs - ₹50 Lakhs</option>
+                  <option value="50l-1cr">₹50 Lakhs - ₹1 Crore</option>
+                  <option value="100l-2.5cr">₹1 Crore - ₹2.5 Crores</option>
+                  <option value="over-2.5cr">Above ₹2.5 Crores</option>
                   <option value="not-sure">Not Sure / Prefer to Discuss</option>
                 </select>
               </div>
@@ -452,9 +404,7 @@ const Contact = () => {
                 className="form-textarea"
               ></textarea>
             </div>
-            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
+            <button type="submit" className="btn btn-primary">Send Message</button>
             {formMessage.text && (
               <div className={`form-message ${formMessage.type}`}>
                 {formMessage.text}

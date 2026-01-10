@@ -225,15 +225,13 @@
 }
 
 .form-step {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(26, 26, 26, 0.2));
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #000000, #1e293b);
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
   box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .form-body {
@@ -754,8 +752,7 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 1.25rem 2.5rem;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(26, 26, 26, 0.2));
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #000000, #1e293b);
   color: white;
   border: none;
   border-radius: 50px;
@@ -791,7 +788,7 @@
 .contact-us-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.3), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(135deg, #1e293b, #000000);
 }
 
 .contact-us-btn:active {
@@ -870,7 +867,7 @@
   width: 90%;
   max-width: 500px;
   max-height: 90vh;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.15), rgba(26, 26, 26, 0.15));
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
